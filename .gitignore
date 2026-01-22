@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+env/
+ENV/
+venv/
+env.bak/
+*.env
+
+# Ignore env folder inside configs
+configs/env/
+
+# Pytest cache
+.pytest_cache/
+test_artifacts/
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Environment files
+*.env
+configs/env/
+
+# Example environment file
+!.env.example
