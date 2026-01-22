@@ -40,7 +40,7 @@ test_artifacts/
 Thumbs.db
 *.swp
 
-# Environment files
+# Environment file
 *.env
 configs/env/
 
