@@ -1,18 +1,40 @@
+"""
+Pytest configuration for authentication tests
+Handles browser session management and test setup/teardown
+"""
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from seleniumbase import BaseCase
+
 
 @pytest.fixture(scope="session")
-def driver():
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-    driver.maximize_window()
-    yield driver
-    driver.quit()
+def sb():
+    """
+    SeleniumBase browser fixture - SESSION SCOPE
+    
+    ✅ Browser opens ONCE at session start
+    ✅ Browser stays open for ALL tests
+    ✅ Browser refreshes between tests (no close/open)
+    ✅ All tests share same browser instance
+    
+    This ensures:
+    - Fast test execution (no browser restart overhead)
+    - Stable browser state across tests
+    - Simple page refresh instead of close/open
+    """
+    base = BaseCase()
+    base.setUp()
+    
+    # Browser is now open
+    print(f"\n{'='*70}")
+    print(f"✅ BROWSER OPENED - SESSION SCOPE (ONE TIME)")
+    print(f"   Will refresh pages instead of close/open")
+    print(f"{'='*70}\n")
+    
+    yield base
+    
+    # Cleanup - browser closes
+    base.tearDown()
+    print(f"\n{'='*70}")
+    print(f"✅ BROWSER CLOSED - SESSION COMPLETE")
+    print(f"{'='*70}\n")
 
-@pytest.fixture(scope="session")
-def login_session(driver):
-    driver.get("https://dev.v.shipgl.in/auth/login")
-    driver.find_element("name", "email").send_keys("12260@vendorexample.com")
-    driver.find_element("name", "password").send_keys("123456")
-    driver.find_element("xpath", "//button[@type='submit']").click()

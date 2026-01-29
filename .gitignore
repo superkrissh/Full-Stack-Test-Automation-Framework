@@ -1,48 +1,129 @@
-# Byte-compiled / optimized / DLL files
+# =============================================================================
+# PYTHON BYTECODE & COMPILED FILES
+# =============================================================================
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Distribution / packaging
 .Python
 *.egg-info/
 dist/
 build/
+*.egg
+*.eggs/
 
-# Virtual environments
-.venv/
+# =============================================================================
+# VIRTUAL ENVIRONMENTS
+# =============================================================================
+venv/
 env/
 ENV/
-venv/
 env.bak/
-*.env
+venv.bak/
+.venv/
+.env/
 
-# Ignore env folder inside configs
+# =============================================================================
+# ENVIRONMENT & CONFIGURATION FILES
+# =============================================================================
+# Real environment files with sensitive credentials (DO NOT COMMIT)
+.env
+.env.local
+.env.prod
+.env.dev
+.env.*.local
 configs/env/
 
-# Pytest cache
-.pytest_cache/
-test_artifacts/
+# Keep the .env template - safe default values for team to copy
+!.env
 
-# Logs
+# =============================================================================
+# TESTING & PYTEST
+# =============================================================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.hypothesis/
+test_artifacts/
+reports/
 *.log
 
-# IDE files
+# =============================================================================
+# IDE & EDITOR FILES
+# =============================================================================
 .vscode/
 .idea/
 *.iml
-
-# OS generated files
-.DS_Store
-Thumbs.db
 *.swp
+*.swo
+*~
+.DS_Store
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
 
-# Environment file
-*.env
-configs/env/
+# =============================================================================
+# OS GENERATED FILES
+# =============================================================================
+.AppleDouble
+.LSOverride
+*.7z
+*.dmg
 
-# Example environment file
-!.env.example
+# =============================================================================
+# PROJECT SPECIFIC
+# =============================================================================
+# Cache and temporary files
+*.cache
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Selenium artifacts
+screenshots/
+downloads/
+geckodriver.log
+
+# Database backups
+*.sql
+*.db
+*.sqlite
+
+# Test results
+test_results.xml
+.testmondata
+
+# =============================================================================
+# DEPENDENCY MANAGEMENT
+# =============================================================================
+Pipfile.lock
+poetry.lock
+
+# =============================================================================
+# SYSTEM & TEMPORARY FILES
+# =============================================================================
+*.bak
+*.tmp
+.tmp/
+/tmp/
+temp/
+
+# =============================================================================
+# BUILD ARTIFACTS
+# =============================================================================
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# =============================================================================
+# IDE OUTPUT
+# =============================================================================
+debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
