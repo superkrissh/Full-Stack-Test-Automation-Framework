@@ -13,6 +13,8 @@ import os
 from dotenv import load_dotenv
 from src.utils.test_reporter import TestReporter
 from src.utils.reports_dashboard import ReportsDashboard
+from src.middleware.telegram_middleware import TelegramReportMiddleware
+
 
 # Load .env file
 load_dotenv()
@@ -82,7 +84,19 @@ def pytest_runtest_makereport(item, call):
 def pytest_sessionfinish(session, exitstatus):
     """Generate report and dashboard at end of test session"""
     if test_results:
-        reporter.generate_report(test_results)
+        report_path = reporter.generate_report(test_results)
     dashboard.generate_dashboard()
-
-
+    
+    try:
+        tg_middleware = TelegramReportMiddleware(
+            base_url=BASE_URL,
+            browser=BROWSER,
+            headless=HEADLESS,
+        )
+        tg_middleware.send(
+            test_results=test_results,
+            exitstatus=exitstatus,
+            report_path=report_path if test_results else None,
+        )
+    except Exception as e:
+        print(f"⚠️  Telegram report sending failed: {e}")

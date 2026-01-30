@@ -53,8 +53,8 @@ reports/html/test_report_*.html
 reports/json/
 reports/screenshots/
 !reports/dashboard.html
+reports/*
 *.log
-
 # =============================================================================
 # IDE & EDITOR FILES
 # =============================================================================
