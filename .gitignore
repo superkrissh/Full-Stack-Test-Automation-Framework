@@ -35,7 +35,6 @@ venv.bak/
 configs/env/
 
 # Keep the .env template - safe default values for team to copy
-!.env
 
 # =============================================================================
 # TESTING & PYTEST
